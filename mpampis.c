@@ -1,5 +1,5 @@
 #include <stdio.h>
-// #include<conio.h>
+
 #include<string.h>
 struct Student {
     char am [10];
