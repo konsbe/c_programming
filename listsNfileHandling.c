@@ -10,6 +10,58 @@ struct student{
 };
 struct student *head;
 
+void saveList();
+void loadList();
+void add(int am, char name[20], char surname[20]);
+void readAll();
+void deleteItem();
+
+
+int main(){
+  struct Student* head = NULL;
+    int i,AM, num;
+    char stname[20],stsurname[20];
+
+    while(1){
+        printf("1.Add Student\n");
+        printf("2.Display Students\n");
+        printf("3.Delete\n");
+        printf("4.Save List\n");
+        printf("5.Load List\n");
+        printf("6.Exit\n");
+        printf("Enter your choice:");
+        scanf("%d",&i);
+        if(i==1){
+            printf("Enter the student's AM:");
+            scanf("%d",&AM);
+            printf("Enter the student's name:");
+            scanf("%s",stname);
+            printf("Enter the student's surname:");
+            scanf("%s",stsurname);
+            add(AM,stname,stsurname);
+        }
+        else if (i==2){
+            readAll();
+        }
+
+        else if (i==3){
+          deleteItem();
+
+        }
+        else if (i==4){
+            saveList();
+        }
+
+        else if (i==5){
+          loadList();
+
+        }
+        else if (i==6){
+            return 0;
+        }
+    }
+    return 0;
+}
 
 void add(int am, char name[20], char surname[20]){
     struct student *pts;
@@ -97,50 +149,4 @@ void saveList(){
     }
     fclose(fptr);
     printf("List saved successfully\n");
-}
-
-int main(){
-  struct Student* head = NULL;
-    int i,AM, num;
-    char stname[20],stsurname[20];
-
-    while(1){
-        printf("1.Add Student\n");
-        printf("2.Display Students\n");
-        printf("3.Delete\n");
-        printf("4.Save List\n");
-        printf("5.Load List\n");
-        printf("6.Exit\n");
-        printf("Enter your choice:");
-        scanf("%d",&i);
-        if(i==1){
-            printf("Enter the student's AM:");
-            scanf("%d",&AM);
-            printf("Enter the student's name:");
-            scanf("%s",stname);
-            printf("Enter the student's surname:");
-            scanf("%s",stsurname);
-            add(AM,stname,stsurname);
-        }
-        else if (i==2){
-            readAll();
-        }
-
-        else if (i==3){
-          deleteItem();
-
-        }
-        else if (i==4){
-            saveList();
-        }
-
-        else if (i==5){
-          loadList();
-
-        }
-        else if (i==6){
-            return 0;
-        }
-    }
-    return 0;
 }
