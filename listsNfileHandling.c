@@ -45,7 +45,7 @@ void readAll(){
     printf("*****************************************************\n");
 }
 
-void deleteList()
+void deleteItem()
 {
     struct student *prev;
     prev= head;
@@ -63,16 +63,54 @@ void deleteList()
     }
 }
 
+void loadList(){
+    head=NULL;
+    FILE *fptr;
+    fptr = fopen("./data/studentlist.txt","r");
+    if(fptr==NULL){
+        printf("Something went wrong with the file!\n");
+        return;
+    }
+    struct  student s;
+    while (fread(&s,sizeof(struct student),1,fptr)){
+        add(s.am,s.name,s.surname);
+    }
+    fclose(fptr);
+    printf("Data loaded to linked list!\n");
+}
+
+void saveList(){
+    struct student *r;
+    r = head;
+    if(r==NULL){
+        return;
+    }
+    FILE *fptr;
+    fptr = fopen("./data/studentlist.txt","wb");
+    if(fptr==NULL){
+        printf("Something went wrong with the file!\n");
+        return;
+    }
+    while (r!=NULL){
+        fwrite(r, sizeof(struct student),1,fptr);
+        r = r->next;
+    }
+    fclose(fptr);
+    printf("List saved successfully\n");
+}
 
 int main(){
   struct Student* head = NULL;
     int i,AM, num;
     char stname[20],stsurname[20];
+
     while(1){
         printf("1.Add Student\n");
         printf("2.Display Students\n");
         printf("3.Delete\n");
-        printf("4.Exit\n");
+        printf("4.Save List\n");
+        printf("5.Load List\n");
+        printf("6.Exit\n");
         printf("Enter your choice:");
         scanf("%d",&i);
         if(i==1){
@@ -89,10 +127,18 @@ int main(){
         }
 
         else if (i==3){
-          deleteList();
+          deleteItem();
 
         }
         else if (i==4){
+            saveList();
+        }
+
+        else if (i==5){
+          loadList();
+
+        }
+        else if (i==6){
             return 0;
         }
     }
