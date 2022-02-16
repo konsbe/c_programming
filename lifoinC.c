@@ -85,7 +85,7 @@ void display(int i,int stiva, int top)
 	{
 		printf("Empty stack\n"); // Adeia Lista
 	}
-	else if(top > 0)
+	else if(top >= 0)
 	{
 		printf("The items of the stack is:\n");
 		for(i = top; i >= 0; i--)
