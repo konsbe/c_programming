@@ -118,7 +118,7 @@ void deleteItem()
 void loadList(){
     head=NULL;
     FILE *fptr;
-    fptr = fopen("./data/studentlist.txt","r");
+    fptr = fopen("./studentlist.txt","r");
     if(fptr==NULL){
         printf("Something went wrong with the file!\n");
         return;
@@ -138,9 +138,13 @@ void saveList(){
         return;
     }
     FILE *fptr;
-    fptr = fopen("./data/studentlist.txt","wb");
+    fptr = fopen("./studentlist.txt","wb");
     if(fptr==NULL){
-        printf("Something went wrong with the file!\n");
+        fptr = fopen( "./studentlist.txt" , "a" );
+        // fptr = fopen( "./data/studentlist.txt" , "wb" );
+        fwrite(r, sizeof(struct student),1,fptr);
+        r = r->next;
+        // printf("Something went wrong with the file!\n");
         return;
     }
     while (r!=NULL){
