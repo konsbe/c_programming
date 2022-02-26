@@ -18,7 +18,7 @@ void deleteItem();
 
 
 int main(){
-  struct Student* head = NULL;
+//   struct Student* head = NULL;
     int i,AM, num;
     char stname[20],stsurname[20];
 
