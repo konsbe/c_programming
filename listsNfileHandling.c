@@ -33,50 +33,54 @@ int main(){
         printf("7.Exit\n");
         printf("Enter your choice:");
         scanf("%d",&i);
-        if(i==1){
-            printf("Enter the student's AM:");
-            scanf("%d",&AM);
-            printf("Enter the student's name:");
-            scanf("%s",stname);
-            printf("Enter the student's surname:");
-            scanf("%s",stsurname);
-            add(AM,stname,stsurname);
-        }
-        else if (i==2){
-            readAll();
-        }
+        switch(i){
 
-        else if (i==3){
-          deleteItem();
 
-        }
-        else if (i==4){
-            saveList();
-        }
+            case 1 :
+                printf("Enter the student's AM:");
+                scanf("%d",&AM);
+                printf("Enter the student's name:");
+                scanf("%s",stname);
+                printf("Enter the student's surname:");
+                scanf("%s",stsurname);
+                add(AM,stname,stsurname);
+                break;
 
-        else if (i==5){
-          loadList();
+            case 2 :
+                readAll();
+                break;
 
-        }
 
-        else if (i==6){
-            printf("Enter the student's AM you want to change:");
-            scanf("%d",&AM);
-            printf("Enter the student's new Am:");
-            scanf("%d",&newAm);
-            printf("Enter the student's name:");
-            scanf("%s",stname);
-            printf("Enter the student's surname:");
-            scanf("%s",stsurname);
-            update(AM, newAm, stname, stsurname);
+            case 3 :
+            deleteItem();
+                break;
 
+            case 4 :
+                saveList();
+                break;
+
+            case 5 :
+                loadList();
+                break;
+
+            case 6 :
+                printf("Enter the student's AM you want to change:");
+                scanf("%d",&AM);
+                printf("Enter the student's new Am:");
+                scanf("%d",&newAm);
+                printf("Enter the student's name:");
+                scanf("%s",stname);
+                printf("Enter the student's surname:");
+                scanf("%s",stsurname);
+                update(AM, newAm, stname, stsurname);
+                break;
+            default:
+                return 0;
+            }
         }
-        else if (i==7){
-            return 0;
-        }
-    }
     return 0;
-}
+    }
+
 
 void add(int am, char name[20], char surname[20]){
     struct student *pts;
@@ -124,8 +128,6 @@ void update(int am, int newAm, char name[20], char surname[20]){
             }
 
         }
-        // head = upts;
-        // return;
     }
 }
 
@@ -146,17 +148,16 @@ void readAll(){
 
 void deleteItem()
 {
-    struct student *prev;
-    prev= head;
-    if(prev==NULL){
+    struct student *dptr;
+    dptr= head;
+    if(dptr==NULL){
         return;
     }
-    while (prev!=NULL)
+    while (dptr!=NULL)
     {
         head = (head)->next;
-
         // printf("Deleting %d\n", prev->data);
-        free(prev);
+        free(dptr);
         return;
         // prev = head;
     }

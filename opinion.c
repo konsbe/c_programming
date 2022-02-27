@@ -22,6 +22,7 @@ void exit();
 int main(){
     int choice, a;
     char fName[40], sx[10], cType[50], bday[50];
+
     while (1)
     {
         printf("1. to insert\n");
@@ -52,10 +53,9 @@ int main(){
                 break;
             case 4:
                 return 0;
-                break;
             default:
-                printf("\n \t \t-----------------------------------");
-                printf("\n \t \tSorry wrong answer i will terminate");
+                printf("\n \t \t-----------------------------------\n");
+                printf("\n \t \tSorry wrong answer i will terminate\n");
                 printf("\n \t \t-----------------------------------\n");
                 return 0;
             }
@@ -74,16 +74,20 @@ void insertCovid(int age, char fullName[40], char sex[10], char covidType[50], c
     pts->age = age;
     if(head == NULL){
         pts->next = NULL;
-        head = pts;
+
+        head = pts; //(!= NULL || ==afd123fda)
     } else {
         pts->next = head;
         head = pts;
     }
 }
 void readLength(){
-    int counter = 0;
     struct covidList *ptr;
     ptr = head;
+    if(head == NULL){
+        printf("\nempty list\n");
+    }
+    int counter = 0;
     while(ptr!=NULL){
         counter += 1;
         ptr = ptr->next;
@@ -92,8 +96,8 @@ void readLength(){
 }
 void readAll(){
     struct covidList *temp;
-    int counter = 0;
     temp = head;
+    int counter = 0;
     while(temp!=NULL){
         counter += 1;
         printf("%d.%s\n", counter, temp->fullName);
