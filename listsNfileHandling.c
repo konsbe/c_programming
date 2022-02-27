@@ -13,13 +13,14 @@ struct student *head;
 void saveList();
 void loadList();
 void add(int am, char name[20], char surname[20]);
+void update(int am,int newAm, char name[20], char surname[20]);
 void readAll();
 void deleteItem();
 
 
 int main(){
 //   struct Student* head = NULL;
-    int i,AM, num;
+    int i,AM, num, newAm;
     char stname[20],stsurname[20];
 
     while(1){
@@ -28,7 +29,8 @@ int main(){
         printf("3.Delete\n");
         printf("4.Save List\n");
         printf("5.Load List\n");
-        printf("6.Exit\n");
+        printf("6.Update\n");
+        printf("7.Exit\n");
         printf("Enter your choice:");
         scanf("%d",&i);
         if(i==1){
@@ -56,7 +58,20 @@ int main(){
           loadList();
 
         }
+
         else if (i==6){
+            printf("Enter the student's AM you want to change:");
+            scanf("%d",&AM);
+            printf("Enter the student's new Am:");
+            scanf("%d",&newAm);
+            printf("Enter the student's name:");
+            scanf("%s",stname);
+            printf("Enter the student's surname:");
+            scanf("%s",stsurname);
+            update(AM, newAm, stname, stsurname);
+
+        }
+        else if (i==7){
             return 0;
         }
     }
@@ -68,7 +83,7 @@ void add(int am, char name[20], char surname[20]){
 
     pts= malloc(sizeof(struct student));
     pts->am = am;
-    printf("the pointer is : %p\n",pts);
+    // printf("the pointer is : %p\n",pts);
     strcpy(pts->name,name);
     strcpy(pts->surname,surname);
     if(head==NULL){
@@ -77,8 +92,40 @@ void add(int am, char name[20], char surname[20]){
 
     } else{
         pts->next = head;
-          printf("this is the next pointer %p\n",pts );
+        //   printf("this is the next pointer %p\n",pts );
         head = pts;
+    }
+}
+
+void update(int am, int newAm, char name[20], char surname[20]){
+    struct student *upts;
+    upts = head;
+    if (head == NULL)
+    {
+        printf("\n \t \t \t \t-----------------------------------\n");
+        printf("\n \t \t \t \t        sorry %p not found         \n",upts );
+        printf("\n \t \t \t \t-----------------------------------\n");
+        return;
+    }
+    else
+    {
+        while (upts != NULL) {
+            if (am == upts->am){
+                upts->am = newAm;
+                strcpy(upts->name,name);
+                strcpy(upts->surname,surname);
+                return;
+            }
+            upts =upts->next;
+            if (upts == NULL){
+                printf("\n \t \t \t \t-----------------------------------\n");
+                printf("\n \t \t \t \t         sorry %p not found        \n",upts );
+                printf("\n \t \t \t \t-----------------------------------\n");
+            }
+
+        }
+        // head = upts;
+        // return;
     }
 }
 
@@ -88,13 +135,13 @@ void readAll(){
     if(temp==NULL){
         return;
     }
-    printf("*****************************************************\n");
+    printf("\n \t \t \t \t*****************************************************\n");
     while (temp!=NULL){
-        printf("Student: %s %s, with am:%d\n", temp->name, temp->surname, temp->am);
-        printf("Student: %p %p, with am:%p\n", &temp->name, &temp->surname, &temp->am);
+        printf("\n \t \t \t \tStudent: %s %s, with am:%d\n", temp->name, temp->surname, temp->am);
+        printf("\n \t \t \t \tStudent: %p %p, with am:%p\n", &temp->name, &temp->surname, &temp->am);
         temp=temp->next;
     }
-    printf("*****************************************************\n");
+    printf("\n \t \t \t \t*****************************************************\n");
 }
 
 void deleteItem()
@@ -120,7 +167,9 @@ void loadList(){
     FILE *fptr;
     fptr = fopen("./studentlist.txt","r");
     if(fptr==NULL){
-        printf("Something went wrong with the file!\n");
+        printf("\n \t \t \t \t-----------------------------------\n");
+        printf("\n \t \t \t \tSomething went wrong with the file!\n");
+        printf("\n \t \t \t \t-----------------------------------\n");
         return;
     }
     struct  student s;
@@ -128,7 +177,9 @@ void loadList(){
         add(s.am,s.name,s.surname);
     }
     fclose(fptr);
-    printf("Data loaded to linked list!\n");
+    printf("\n \t \t \t \t-----------------------------------\n");
+    printf("\n \t \t \t \t    Data loaded to linked list!    \n");
+    printf("\n \t \t \t \t-----------------------------------\n");
 }
 
 void saveList(){
@@ -152,5 +203,7 @@ void saveList(){
         r = r->next;
     }
     fclose(fptr);
-    printf("List saved successfully\n");
+    printf("\n \t \t \t \t-----------------------------------\n");
+    printf("\n \t \t \t \t      List saved successfully      \n");
+    printf("\n \t \t \t \t-----------------------------------\n");
 }
