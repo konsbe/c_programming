@@ -2,12 +2,12 @@
 #include <stdlib.h>
 #include <string.h>
 
-struct student{
+typedef struct student{
     int am;
     char name[20];
     char surname[20];
     struct student *next;
-};
+}student_t;
 struct student *head;
 
 void saveList();
@@ -16,12 +16,14 @@ void add(int am, char name[20], char surname[20]);
 void update(int am,int newAm, char name[20], char surname[20]);
 void readAll();
 void deleteItem();
-
+void printList();
 
 int main(){
 //   struct Student* head = NULL;
-    int i,AM, num, newAm;
+
+    int i,AM, num, newAm, counter;
     char stname[20],stsurname[20];
+    struct student *students = (struct student*)malloc(counter * sizeof(students));
 
     while(1){
         printf("1.Add Student\n");
@@ -33,25 +35,27 @@ int main(){
         printf("7.Exit\n");
         printf("Enter your choice:");
         scanf("%d",&i);
-        switch(i){
+        switch (i)
+        {
 
+        case 1:
+            printf("Enter the student's AM:");
+            scanf("%d", &AM);
+            printf("Enter the student's name:");
+            scanf("%s", stname);
+            printf("Enter the student's surname:");
+            scanf("%s", stsurname);
+            add(AM, stname, stsurname);
+            students[counter].am = head->am;
+            counter += 1;
+            break;
 
-            case 1 :
-                printf("Enter the student's AM:");
-                scanf("%d",&AM);
-                printf("Enter the student's name:");
-                scanf("%s",stname);
-                printf("Enter the student's surname:");
-                scanf("%s",stsurname);
-                add(AM,stname,stsurname);
-                break;
+        case 2:
+            readAll();
+            printf("studen 0: %d\n", students[counter-1].am);
+            break;
 
-            case 2 :
-                readAll();
-                break;
-
-
-            case 3 :
+        case 3:
             deleteItem();
                 break;
 
@@ -93,11 +97,15 @@ void add(int am, char name[20], char surname[20]){
     if(head==NULL){
         pts->next = NULL;
         head = pts;
+        // printf("student size: %lu\n", sizeof(student));
+
 
     } else{
         pts->next = head;
         //   printf("this is the next pointer %p\n",pts );
         head = pts;
+        // printf("student size:    %lu\n", sizeof(student));
+
     }
 }
 
@@ -208,3 +216,5 @@ void saveList(){
     printf("\n \t \t \t \t      List saved successfully      \n");
     printf("\n \t \t \t \t-----------------------------------\n");
 }
+
+

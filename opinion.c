@@ -52,8 +52,8 @@ int main(){
                 readAll();
                 break;
             case 4:
-                return 0;
             default:
+                return 0;
                 printf("\n \t \t-----------------------------------\n");
                 printf("\n \t \tSorry wrong answer i will terminate\n");
                 printf("\n \t \t-----------------------------------\n");

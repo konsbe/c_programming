@@ -9,8 +9,6 @@ int main(){
     l = retrieve(k);
     update(k);
     printf("%d",l);
-    printf(x+2);
-    // print(y);
 
   return 0;
 }
