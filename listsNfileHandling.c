@@ -2,30 +2,33 @@
 #include <stdlib.h>
 #include <string.h>
 
-typedef struct student{
+struct student{
     int am;
     char name[20];
-    char surname[20];
+    char sex[20];
+    int age;
     struct student *next;
-}student_t;
+};
 struct student *head;
 
 void saveList();
 void loadList();
-void add(int am, char name[20], char surname[20]);
-void update(int am,int newAm, char name[20], char surname[20]);
+void add(int am, char name[20], char sex[20]);
+void update(int am,int newAm, char name[20], char sex[20]);
 void readAll();
 void deleteItem();
-void printList();
-
+// void printList();
+//  char sex[10], int age
 int main(){
-//   struct Student* head = NULL;
+
 
     int i,AM, num, newAm, counter;
-    char stname[20],stsurname[20];
-    struct student *students = (struct student*)malloc(counter * sizeof(students));
+    char stname[20],stsex[20];
+    struct student *students = (struct student*)malloc(100 * sizeof(students));
+    int age;
 
-    while(1){
+    while (1)
+    {
         printf("1.Add Student\n");
         printf("2.Display Students\n");
         printf("3.Delete\n");
@@ -43,9 +46,11 @@ int main(){
             scanf("%d", &AM);
             printf("Enter the student's name:");
             scanf("%s", stname);
-            printf("Enter the student's surname:");
-            scanf("%s", stsurname);
-            add(AM, stname, stsurname);
+            printf("Enter the student's sex:");
+            scanf("%s", stsex);
+            printf("Enter the student's age:");
+            scanf("%d", &age);
+            add(AM, stname, stsex);
             students[counter].am = head->am;
             counter += 1;
             break;
@@ -74,26 +79,30 @@ int main(){
                 scanf("%d",&newAm);
                 printf("Enter the student's name:");
                 scanf("%s",stname);
-                printf("Enter the student's surname:");
-                scanf("%s",stsurname);
-                update(AM, newAm, stname, stsurname);
+                printf("Enter the student's sex:");
+                scanf("%s",stsex);
+                printf("Enter his/her sex:");
+                scanf("%d", &age);
+                printf("Enter the student's sex:");
+                scanf("%s", stsex);
+                update(AM, newAm, stname, stsex);
                 break;
             default:
                 return 0;
             }
-        }
+    }
     return 0;
     }
 
 
-void add(int am, char name[20], char surname[20]){
+void add(int am, char name[20], char sex[20]){
     struct student *pts;
 
     pts= malloc(sizeof(struct student));
     pts->am = am;
     // printf("the pointer is : %p\n",pts);
     strcpy(pts->name,name);
-    strcpy(pts->surname,surname);
+    strcpy(pts->sex,sex);
     if(head==NULL){
         pts->next = NULL;
         head = pts;
@@ -109,7 +118,7 @@ void add(int am, char name[20], char surname[20]){
     }
 }
 
-void update(int am, int newAm, char name[20], char surname[20]){
+void update(int am, int newAm, char name[20], char sex[20]){
     struct student *upts;
     upts = head;
     if (head == NULL)
@@ -125,7 +134,7 @@ void update(int am, int newAm, char name[20], char surname[20]){
             if (am == upts->am){
                 upts->am = newAm;
                 strcpy(upts->name,name);
-                strcpy(upts->surname,surname);
+                strcpy(upts->sex,sex);
                 return;
             }
             upts =upts->next;
@@ -147,8 +156,8 @@ void readAll(){
     }
     printf("\n \t \t \t \t*****************************************************\n");
     while (temp!=NULL){
-        printf("\n \t \t \t \tStudent: %s %s, with am:%d\n", temp->name, temp->surname, temp->am);
-        printf("\n \t \t \t \tStudent: %p %p, with am:%p\n", &temp->name, &temp->surname, &temp->am);
+        printf("\n \t \t \t \tStudent: %s %s, with am:%d\n", temp->name, temp->sex, temp->am);
+        printf("\n \t \t \t \tStudent: %p %p, with am:%p\n", &temp->name, &temp->sex, &temp->am);
         temp=temp->next;
     }
     printf("\n \t \t \t \t*****************************************************\n");
@@ -183,7 +192,7 @@ void loadList(){
     }
     struct  student s;
     while (fread(&s,sizeof(struct student),1,fptr)){
-        add(s.am,s.name,s.surname);
+        add(s.am,s.name,s.sex);
     }
     fclose(fptr);
     printf("\n \t \t \t \t-----------------------------------\n");
