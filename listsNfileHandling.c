@@ -27,6 +27,7 @@ int main(){
     struct student *students = (struct student*)malloc(100 * sizeof(students));
     int age;
 
+    printf("%int",*students);
     while (1)
     {
         printf("1.Add Student\n");
@@ -147,7 +148,6 @@ void update(int am, int newAm, char name[20], char sex[20]){
         }
     }
 }
-
 void readAll(){
     struct student *temp;
     temp=head;
