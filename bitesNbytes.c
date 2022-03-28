@@ -2,10 +2,10 @@
 we have an array
 A(1:2,1:3,3:3,1:2)
 with limits up and down:
-l1=1 u1=2
-l2=1 u2=1
+l1=1 u1=3
+l2=1 u2=2
 l3=3 u3=3
-l4=1 u4=2
+l4=1 u4=3
 foundation andress b=100 and length component L=6
 
 addr(A[i,j,k,z])=c0 +c1*i +c2*j +c3*k +cd*z
@@ -19,13 +19,19 @@ we have a 2 dimension array with l1=1 u1=1 , l2=2 u2=3
 */
 #include<stdio.h>
 int c(int j);
-int addr(int i1, int i2, int i3, int i4);
+int addr(int l1, int l2, int l3, int l4);
 int main(){
-  for(int i1=1; i1<3; i1++){
-    for(int i2=1; i2<4; i2++){
-      for(int i3=3; i3<4; i3++){
-        for(int i4=1; i4<3; i4++){
-          printf("adrr(A[%i,%i,%i,%i])= c(0)+c(1)*i1+c(2)*i2+c(3)*i3+c(4)*i4= %i+%i*%i+%i*%i+%i*%i+%i*%i= %i\n",i1,i2,i3,i4,c(0),c(1),i1,c(2),i2,c(3),i3,c(4),i4,addr(i1,i2,i3,i4));
+  int count = 1;
+  for (int l2 = 1; l2 < 4; l2++)
+  {
+    for (int l1 = 1; l1 < 3; l1++)
+    {
+      for (int l3 = 3; l3 < 4; l3++)
+      {
+        for (int l4 = 1; l4 < 4; l4++)
+        {
+          printf("%d: adrr(A[%i,%i,%i,%i])= c(0)+c(1)*l1+c(2)*l2+c(3)*l3+c(4)*l4= %i+%i*%i+%i*%i+%i*%i+%i*%i= %i\n", count, l1, l2, l3, l4, c(0), c(1), l1, c(2), l2, c(3), l3, c(4), l4, addr(l1, l2, l3, l4));
+          count += 1;
         }
       }
     }
@@ -48,6 +54,6 @@ int c(int j){
   }
 }
 
-int addr(int i1, int i2, int i3, int i4){
-  return c(0)+c(1)*i1+c(2)*i2+c(3)*i3+c(4)*i4;
+int addr(int l1, int l2, int l3, int l4){
+  return c(0)+c(1)*l1+c(2)*l2+c(3)*l3+c(4)*l4;
 }
