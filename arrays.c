@@ -1,8 +1,6 @@
 #include <stdio.h>
-//declare functions void
 float retrieve( float p);
 float update(float num1, float num2);
-// float retrieve(int arr[])    //declare a function tha gets an array as argument
 
 int main () {
 
@@ -32,7 +30,6 @@ int main () {
        p2 = &strc_1[i];
        num2 = retrieve(  *p2);
        printf("value is -->%f ,", strc_2[i]);
-    //    printf("pointer is -->%f\n =", *p2);
        strc_3[i] = update(num1, num2);
        printf("value is -->%f \n", strc_3[i]);
    }
@@ -44,8 +41,6 @@ float retrieve(float p)
 
     float pointer;
     pointer = p;
-    // printf("pointer from function -->%p\n =", &pointer);
-    // printf("value of the pointer  -->%f\n =", pointer);
     return pointer;
 }
 
@@ -56,13 +51,3 @@ float update(float val1,float val2)
     return sum;
 }
 
-// int retrieve(int arr[]) // This is the return type (void means no value is computed and returned by the function!)
-// {
-//     int i;
-//     for (i = 0; i < 10; i++)
-//     {
-//         printf("enter value for array_1[%d] --> %d/n", i, arr[i]);
-
-//     }
-//     return 0;
-// }

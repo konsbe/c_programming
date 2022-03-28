@@ -17,8 +17,7 @@ void add(int am, char name[20], char sex[20]);
 void update(int am,int newAm, char name[20], char sex[20]);
 void readAll();
 void deleteItem();
-// void printList();
-//  char sex[10], int age
+
 int main(){
 
 
@@ -27,7 +26,6 @@ int main(){
     struct student *students = (struct student*)malloc(100 * sizeof(students));
     int age;
 
-    printf("%int",*students);
     while (1)
     {
         printf("1.Add Student\n");
@@ -39,6 +37,9 @@ int main(){
         printf("7.Exit\n");
         printf("Enter your choice:");
         scanf("%d",&i);
+        if (i!=1 && i!=2 && i!=3 && i!=4 && i!=5 && i!=6 && i!=7){
+            i = 2;
+        }
         switch (i)
         {
 
@@ -84,8 +85,6 @@ int main(){
                 scanf("%s",stsex);
                 printf("Enter his/her sex:");
                 scanf("%d", &age);
-                printf("Enter the student's sex:");
-                scanf("%s", stsex);
                 update(AM, newAm, stname, stsex);
                 break;
             default:
