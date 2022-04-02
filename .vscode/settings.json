@@ -3,7 +3,11 @@
         "*.ejs": "html",
         "string.h": "c",
         "stdlib.h": "c",
-        "ctype.h": "c"
+        "ctype.h": "c",
+        "*.tcc": "c",
+        "cstdio": "c",
+        "string_view": "c",
+        "functional": "c"
     },
     "C_Cpp.errorSquiggles": "Disabled"
 }

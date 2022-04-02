@@ -1,25 +1,25 @@
 #include "stdio.h"
 #include "string.h"
 
-//dilwsh N-thesewn 50 
+//dilwsh N-thesewn 50
 #define N 50
 
 //dilwsh synwnymwn me vash thn ekfwnhsh
 
-#define VANGELIS 'V'
-#define KASSERIS 'S'
+#define VANGELIS '('
+#define KASSERIS ')'
 
 //ypodiknyei thn arxh ths stoivas
 #define ISYMBOL '!'
 
 //dilwsh stoivas me megethos N
-char stack[N];		
+char stack[N];
 
-//arxikopoihsh adeias stoivas 
-int top = -1;	
+//arxikopoihsh adeias stoivas
+int top = -1;
 
 //apothikeyei string pou eisagei o xrhsths
-char eisodos[N];	
+char eisodos[N];
 
 //synwnimo gia to char
 typedef char element;
@@ -50,13 +50,13 @@ void main () {
 	    push_element(VANGELIS);
 			displayStack();
 	  }
-	  
+
 	  else if (eisodos[i]==KASSERIS)
 	  {
 	    pop_element();
 			displayStack();
 	  }
-	  
+
 	  else
 	  {
 		printf("Invalid input\n");
@@ -69,12 +69,12 @@ void main () {
   	{
    		printf("YES\n");
     }
-  
+
   	else
     {
     	printf("NO\n");
     }
-  
+
  }
 
 //synarthsh pou kanei push stoixeio sthn stoiva
@@ -99,8 +99,8 @@ void pop_element()
 	{
 		printf("pop_element: Error-Stack empty\n");
 	}
-	
-	else 
+
+	else
 		top--;
 }
 
@@ -121,12 +121,12 @@ void stack_empty()
 void displayStack()
 {
 	int i;
-	
+
 	for(i=0; i<=top; i++)
 	{
 		printf("%c", stack[i]);
 	}
-	
+
 	printf("\n");
 }
 
