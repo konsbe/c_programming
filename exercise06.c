@@ -43,7 +43,7 @@ int main()
 				sprintf(numY, "%d", j);
 			 	if (string[i] == numY[0]){
 					int d = 0;
-					while (d<10){
+					while (d<100){
 						sprintf(numX, "%d", d);
 							if (string[i+1] == numX[0]){
 								// printf("%s \n", strcat(numY,numX));
