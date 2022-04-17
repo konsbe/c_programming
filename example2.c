@@ -21,7 +21,7 @@ char **str_split(char *a_str, const char a_delim);
 
 int main()
 {
-    char text[] = "40 - [( 10 + 3 ) x ( 12 - 6 )]";
+    char text[] = "4 - [( 10 + 3 ) x ( 12 - 6 )]";
     char **tokens, numX[20], numY[20];
     int d;
     printf("ORIGINAL TEXT:\n%s\n\n", text);
@@ -41,34 +41,35 @@ int main()
         printf("\n");
         // free(tokens);
     }
-    i = 0;
-    while (*(tokens + i))
-    {
-            TRY
-            {
-                sprintf(numX, "%s", *(tokens + i));
-                printf("%s\n", *(tokens + i));
-                d = 0;
-                while (d < 100)
-                {
-                    sprintf(numY, "%d", d);
-                    if (numX[0] == numY[0])
-                    {
-                        pushPostfix(numX[0]);
-                    }
-                    d++;
-                }
-                // free(*(tokens + i));
-                i++;
-            }
-                // THROW;
-                printf("I do not appear\n");
-            CATCH
-            {
-                printf("Got Exception!\n");
-            }
-            ETRY;
-    }
+    // i = 0;
+    // while (*(tokens + i))
+    // {
+    //         TRY
+    //         {
+    //             sprintf(numX, "%s", *(tokens + i));
+    //             printf("%s\n", *(tokens + i));
+    //             d = 0;
+    //             while (d < 100)
+    //             {
+    //                 sprintf(numY, "%d", d);
+    //                 if (numX[0] == numY[0])
+    //                 {
+    //                     pushPostfix(numX[0]);
+    //                     break;
+    //                 }
+    //                 d++;
+    //             }
+    //             // free(*(tokens + i));
+    //             i++;
+    //         }
+    //             // THROW;
+    //             printf("I do not appear\n");
+    //         CATCH
+    //         {
+    //             printf("Got Exception!\n");
+    //         }
+    //         ETRY;
+    // }
     return 0;
 }
 
@@ -82,11 +83,12 @@ void pushPostfix(char character)
 	else
 	{
 		printf("pushPostfix");
-		scanf("%d", &element);
-		printf("\n");
-		top++;
-		stiva[top]=element;
-	}
+        // scanf("%d", &element);
+        printf("\n");
+        top++;
+        stiva[top] = character;
+        // printf("%c", stiva[top]);
+    }
 }
 
 void pushHelpArray(char character)
