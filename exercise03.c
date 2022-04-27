@@ -18,12 +18,13 @@ struct Student {
 int main () {
 
     int size;
+    printf("how many students you need? --> ");
+    scanf("%d",&size);
     struct Student student, arr_st[size][30];
     char arr_course[size][size*30];
     // int (*ptr)[size];
     char str[size][50], givenSubj[30];
-    printf("how many students you need? --> ");
-    scanf("%d",&size);
+
     printf("array is arr[%d][30]\n", size);
     for (int i = 0; i < size; i++)
     {
