@@ -14,7 +14,7 @@ struct Student {
     char selected_course [20];
 
 };
-//
+
 int main () {
 
     int size;
