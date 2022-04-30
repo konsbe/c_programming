@@ -34,7 +34,6 @@
 [a-zA-Z]+     {printf("'%s' is variable\n", yytext); count2++;}
 .	      {printf("'%s' is other lexeme\n", yytext); count3++;}
 
-\n        {return 0;}
 %%
 
 /*** ------------------------ USER CODE SECTION ------------------------ ***/

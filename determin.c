@@ -1,13 +1,13 @@
 #include "stdio.h"
 #include "string.h"
-
+#include <unistd.h>
 //dilwsh N-thesewn 50
 #define N 50
 
 //dilwsh synwnymwn me vash thn ekfwnhsh
 
-#define VANGELIS '('
-#define KASSERIS ')'
+#define lparenth '('
+#define rparenth ')'
 
 //ypodiknyei thn arxh ths stoivas
 #define ISYMBOL '!'
@@ -36,7 +36,7 @@ void main () {
 
   int i=0;
 
-  printf("Please enter a string for examination that consists of V and S only (caps lock) :\n");
+  printf("Please enter a string for examination for blocking parenthesis :\n");
   scanf("%s", eisodos);
   push_element(ISYMBOL);
 
@@ -45,21 +45,25 @@ void main () {
 	while(eisodos[i]!='\0')
 	{
 	  //vasi ekfwnhshs ginontai oi aparaithth elegxoi kai oi antistoixes energeies
-	  if(eisodos[i]==VANGELIS)
+	  if(eisodos[i]==lparenth)
 	  {
-	    push_element(VANGELIS);
+	    push_element(lparenth);
+		  	printf("K1 push %c\n", eisodos[i]);
 			displayStack();
+			sleep(1);
 	  }
 
-	  else if (eisodos[i]==KASSERIS)
+	  else if (eisodos[i]==rparenth)
 	  {
 	    pop_element();
+			printf("K2 pop %c\n", eisodos[i]);
 			displayStack();
+			sleep(1);
 	  }
 
 	  else
 	  {
-		printf("Invalid input\n");
+		  printf("Invalid input, pop %c\n", eisodos[i]);
 	  }
 	i++;
   }
@@ -67,7 +71,7 @@ void main () {
 	//elegxei an exei meinei to "!" petaei mynhma nai alliws minima oxi
   	if(get_top()==ISYMBOL)
   	{
-   		printf("YES\n");
+   		printf("K3 YES\n");
     }
 
   	else
