@@ -28,7 +28,7 @@ int main()
 
     tokens = str_split(text, ' ');
 
-    if (tokens)
+    ifξ(tokens)
     {
         int i = 0;
         while (*(tokens + i))

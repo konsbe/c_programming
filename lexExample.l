@@ -21,6 +21,7 @@
     int count12;
     int count13;
     int count14;
+    int count15;
 %}
 
 /*** ------------------------ RULE SECTION ------------------------ ***/
@@ -28,19 +29,19 @@
 %%
 
 "\t"	{return 0;}
+(int)		{printf("'%s'Dilwsi Integer variable \n",yytext); count14++;}
 " "	      {printf("'%s' Anagnoristike o kenos xaraktiras \n", yytext); count12++;}
 ";"	      {printf("'%s' Anagnoristike o xaraktiras \n", yytext); count4++;}
 ","           {printf("'%s' Anagnoristike o diaxwristikos xaraktiras \n",yytext); count5++;}
 ":"           {printf("'%s' Anagnoristike o xaraktiras \n",yytext); count6++;}
 "\n"           {printf("'%s' It is a break line \n",yytext); count13++;}
-"int"		{printf("'%s'Dilwsi Intiger variable \n",yytext); count14++;}
-"var"         {printf("'%s' Anagnoristike i dilosi metavlitis \n",yytext); count7++;}
-"integer"     {printf("'%s' Anagnoristike i desmevmeni leksi \n",yytext); count8++;}
-"real"        {printf("'%s' Anagnoristike i desmevmeni leksi \n",yytext); count9++;}
-"boolean"     {printf("'%s' Anagnoristike i desmevmeni leksi \n",yytext); count10++;}
-"char"        {printf("'%s' Anagnoristike i desmevmeni leksi \n",yytext); count11++;}
+(var)         {printf("'%s' Anagnoristike i dilosi metavlitis \n",yytext); count7++;}
+(integer582)     {printf("'%s' Anagnoristike i desmevmeni leksi \n",yytext); count8++;}
+(real582)        {printf("'%s' Anagnoristike i desmevmeni leksi \n",yytext); count9++;}
+(boolean582)     {printf("'%s' Anagnoristike i desmevmeni leksi \n",yytext); count10++;}
+(char582)        {printf("'%s' Anagnoristike i desmevmeni leksi \n",yytext); count11++;}
 [0-9]+        {printf("'%s' is integer\n", yytext); count1++;}
-[a-zA-Z]*[0-9]+       {printf("'%s' is variable\n", yytext); count2++;}
+([a-zA-Z_][a-zA-Z0-9_]*)+       {printf("'%s' is variable\n", yytext); count2++;}
 .	      {printf("'%s' is other lexeme\n", yytext); count3++;}
 %%
 
